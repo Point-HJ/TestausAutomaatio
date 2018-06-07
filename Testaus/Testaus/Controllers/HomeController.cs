@@ -10,6 +10,15 @@ namespace Testaus.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.TämäViikko = Utilities.DateParsing.GetWeekNumber(DateTime.Today);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(string pvm)
+        {
+            DateTime date = Utilities.DateParsing.ParseFinnishDate(pvm);
+            ViewBag.Päivämäärä = date;
             return View();
         }
 
